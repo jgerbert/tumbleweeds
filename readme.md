@@ -1,4 +1,23 @@
 
+# Tumbleweeds Game
+A unique and engaging 2D physics-based game where players control paddles to interact with a tumbleweed in a dynamic environment.
+
+## Table of Contents
+1. [Game Features](#game-features)
+2. [Project Structure](#project-structure)
+3. [Technical Requirements](#technical-requirements)
+4. [Setup and Installation](#setup-and-installation)
+5. [Contributing](#contributing)
+6. [License](#license)
+
+## Game Features
+- Classic Pong gameplay with a twist.
+- Single player and two player modes.
+- Customizable game settings.
+- Responsive UI for desktop and mobile devices.
+- High score tracking.
+
+
 # Project Structure
 
 ## `js/models/`
@@ -60,6 +79,7 @@ Styles for game elements ensuring responsive design.
 8. **Paddle.js**: The paddle model class, representing a paddle object in the game world. It includes properties and methods related to the paddle's physics body, size, position, and movement.
 
 9. **Player.js**: The player model class, representing a game player. It includes properties for the player's score and serving status, as well as methods for adding points and toggling serving.
+
 
 ## Code Structure
 
@@ -125,6 +145,11 @@ The game should be built using the following technologies and frameworks:
 - JavaScript
 - Matter.js
 - Model-View-Controller (MVC) architecture pattern for separation of concerns
+
+## Setup and Installation
+To run the game locally:
+1. Clone the repository.
+2. Open `index.html` in a web browser.
 
 ## World Objects
 

@@ -75,22 +75,6 @@ class Particle {
   }
 }
 
-// Helper functions are defined below:
-
-/* function getRandomColor() {
-  const colors = [
-    { name: "Caramel", hex: "#C57A44" },
-    { name: "Buff", hex: "#E0AA83" },
-    { name: "Burnt sienna", hex: "#C97C65" },
-    { name: "Fawn", hex: "#EFAF6D" },
-    { name: "Persian orange", hex: "#D89574" },
-    { name: "Brown sugar", hex: "#A5633A" },
-  ];
-
-  return colors[Math.floor(Math.random() * colors.length)].hex;
-}
-*/
-
 // --------------------
 // HELPER FUNCTIONS
 // --------------------
@@ -98,9 +82,15 @@ class Particle {
 // Returns a random primary color from a predefined list.
 function getRandomColor() {
   const primaryColors = [
-    { name: "Red", hex: "#FF0000" },
-    { name: "Blue", hex: "#0000FF" },
-    { name: "Yellow", hex: "#FFFF00" },
+   // { name: "Red", hex: "#FF0000" },
+   // { name: "Blue", hex: "#0000FF" },
+   // { name: "Yellow", hex: "#FFFF00" },
+    { name: "Caramel", hex: "#C57A44" },
+    { name: "Buff", hex: "#E0AA83" },
+    { name: "Burnt sienna", hex: "#C97C65" },
+    { name: "Fawn", hex: "#EFAF6D" },
+    { name: "Persian orange", hex: "#D89574" },
+    { name: "Brown sugar", hex: "#A5633A" },
   ];
   return primaryColors[Math.floor(Math.random() * primaryColors.length)].hex;
 }
@@ -117,7 +107,7 @@ function getRandomFadeOutStart() {
 
 // Returns a random size factor for the particle.
 function getRandomSize() {
-  return Math.random() * 1.2 + .8;
+  return Math.random() * 14.2 + .8;
 }
 
 // Calculates and returns an opacity factor based on the particle's size.
@@ -161,6 +151,7 @@ function wrapAroundScreen(particle) {
 }
 
 // Updates the particle's velocity based on the wind force and then moves the particle.
+// Updates the particle's velocity based on the wind force and then moves the particle.
 function updateVelocityBasedOnWind(particle, windForce, deltaTime) {
   // Calculate the wind's angle and magnitude.
   const windAngle = Math.atan2(windForce.y, windForce.x);
@@ -168,10 +159,10 @@ function updateVelocityBasedOnWind(particle, windForce, deltaTime) {
   const actualWindForce = windMagnitude * 1000;
 
   // If the particle is still thrusting, move it based on its initial velocity.
-  if (particle.thrustDuration > 0) {
+  if (particle.thrustTime > 0) {  // Corrected property from thrustDuration to thrustTime
       particle.x += particle.vx * deltaTime * particle.speedFactor;
       particle.y += particle.vy * deltaTime * particle.speedFactor;
-      particle.thrustDuration -= deltaTime;
+      particle.thrustTime -= deltaTime;  // Decrease the thrustTime
   } else {
       // If the particle is affected by wind, adjust its velocity and move it.
       particle.vx += (Math.cos(windAngle) * actualWindForce * particle.speedFactor - particle.vx) * particle.easing;

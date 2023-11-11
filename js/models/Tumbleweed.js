@@ -3,20 +3,23 @@ import GameConfig from '../GameConfig.js';
 import Matter from 'https://cdn.skypack.dev/matter-js@0.18.0';
 
 // Class definition: Tumbleweed
+// Represents the tumbleweed object in the game, including its physical properties and rendering logic.
 class Tumbleweed {
-  // Constructor: special method for creating and initializing an object created within a class.
+  // Constructor: Initializes a new instance of the Tumbleweed class.
+  // Parameters:
+  // x, y: Initial position coordinates of the Tumbleweed.
+  // canvasWidth, canvasHeight: Dimensions of the canvas for boundary calculations.
   constructor(x, y, canvasWidth, canvasHeight) {
-
-    // Retrieve the configuration for the Tumbleweed
+    // Retrieve the configuration for the Tumbleweed from GameConfig.
     const config = GameConfig.level1.tumbleweed;
 
-    // Initialize properties: radius, canvas dimensions, scale
+    // Initialize properties: radius, canvas dimensions, and scaling factor for rendering.
     this.radius = config.radius;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.scale = config.scale;
 
-    // Define options for the physical body
+    // Define options for the physical body based on the configuration.
     const options = {
       frictionAir: config.frictionAir,
       restitution: config.restitution,
@@ -24,65 +27,66 @@ class Tumbleweed {
       friction: config.friction
     };
 
-    // Create the physical polygonal rigid body using Matter.js
+    // Create the physical polygonal rigid body using Matter.js.
+    // The body is defined as a hexagon to approximate the shape of a tumbleweed.
     this.body = Matter.Bodies.polygon(x, y, 6, this.radius, options);
 
-    // Create a new Image object and set its source
+    // Create a new Image object for the tumbleweed sprite and set its source.
     this.sprite = new Image();
     this.sprite.src = config.sprite;
 
-    // Array to store the positions and opacities of the ghost sprites
+    // Initialize an array to store the positions and opacities of the ghost sprites for the trail effect.
     this.trail = [];
 
-    // Set the label property of the body for identification in collision handling
+    // Set the label property of the body for identification in collision handling.
     Matter.Body.set(this.body, 'label', config.label);
 
+    // Create a reference to this Tumbleweed instance on its Matter.js body for easy access.
     this.body.tumbleweedReference = this;
 
+    // Initialize properties to manage the trail effect.
+    this.isTrailEnabled = false; // Indicates whether the trail effect is enabled.
+    this.isFading = false; // Indicates whether the trail is currently fading out.
   }
 
-  // Property to track whether the trail is currently enabled
-  isTrailEnabled = false;
-
-  // Property to track whether the trail is currently fading
-  isFading = false;
-
-  // Method to enable or disable the trail
+  // Method to enable or disable the trail effect.
+  // isEnabled: Boolean flag to turn the trail effect on or off.
   enableTrail(isEnabled) {
     this.isTrailEnabled = isEnabled;
   }
 
-  // Method to fade the tumbleweed trail out
+  // Method to gradually fade out the tumbleweed trail.
   fadeTrail() {
-    this.isFading = true; // Set isFading to true at the start of the fading process
+    // Start the fading process by setting isFading to true.
+    this.isFading = true;
 
-    // Decrement the opacity of the first sprite by a small amount
+    // Reduce the opacity of the first sprite in the trail.
     if (this.trail.length > 0) {
         this.trail[0].opacity -= 0.05;
     }
 
-    // If the first sprite's opacity reaches 0, remove it from the trail
+    // Remove the first sprite from the trail if its opacity reaches zero.
     while (this.trail.length > 0 && this.trail[0].opacity <= 0) {
         this.trail.shift();
     }
 
-    // If there are still sprites left in the trail, continue fading on the next frame
+    // Continue fading the remaining trail on the next animation frame, if applicable.
     if (this.trail.length > 0 && this.isFading) {
         requestAnimationFrame(() => this.fadeTrail());
     } else {
-        this.isFading = false; // Set isFading to false when the fading process is complete
+        // End the fading process when all trail sprites have faded.
+        this.isFading = false;
     }
-}
+  }
 
-  // This render method draws the Tumbleweed on the canvas.
+  // Render method: Draws the Tumbleweed and its trail on the canvas.
+  // context: The 2D rendering context of the canvas.
   render(context) {
     context.save();
-    
-    // Set the position and rotation for drawing the Tumbleweed
+
+    // Draw the main Tumbleweed sprite.
     context.translate(this.body.position.x, this.body.position.y);
     context.rotate(this.body.angle);
-    
-    // Draw the main Tumbleweed sprite
     context.drawImage(
       this.sprite,
       -this.radius,
@@ -90,19 +94,15 @@ class Tumbleweed {
       this.sprite.width * this.scale,
       this.sprite.height * this.scale
     );
-  
-    // Restore the original context state for the main Tumbleweed sprite
     context.restore();
-    
-    // Check if the trail is enabled before drawing it
+
+    // Draw the Tumbleweed trail, if enabled.
     if (this.isTrailEnabled) {
-      // Draw the trail
       for (const ghost of this.trail) {
         context.save();
-        context.globalAlpha = ghost.opacity;  // Set the opacity for this ghost sprite
-        context.translate(ghost.x, ghost.y);  // Translate to the ghost's position
-        context.rotate(this.body.angle);  // Use the same rotation as the main sprite
-  
+        context.globalAlpha = ghost.opacity;
+        context.translate(ghost.x, ghost.y);
+        context.rotate(this.body.angle);
         context.drawImage(
           this.sprite,
           -this.radius,
@@ -110,15 +110,11 @@ class Tumbleweed {
           this.sprite.width * this.scale,
           this.sprite.height * this.scale
         );
-  
-        // Restore the context state to its original form for each ghost sprite
         context.restore();
-      } 
+      }
     }
   }
-  
 }
 
-// Export the Tumbleweed class as the default export.
-// This allows other modules to import this class using a simpler syntax.
+// Export the Tumbleweed class as the default export for use in other modules.
 export default Tumbleweed;
