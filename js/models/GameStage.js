@@ -26,6 +26,9 @@ class gameStage {
 
      // Set the game controller
     this.gameController = null;
+
+    // Enable debug rendering
+    // this.enableDebugRendering(canvasWidth, canvasHeight);
     }
   
   setGameController(gameController) {
@@ -85,6 +88,25 @@ class gameStage {
       // this.gameController.aiController.removeTumbleweed();
     }
   }
+// renderer for wireframes 
+  /* enableDebugRendering(canvasWidth, canvasHeight) {
+    // Create a renderer using the canvas element
+    this.renderer = Matter.Render.create({
+        element: document.body, // You can change this to a specific HTML element if needed
+        engine: this.matterEngine,
+        options: {
+            width: canvasWidth,
+            height: canvasHeight,
+            wireframes: true, // Shows the shapes of the bodies
+            showCollisions: true, // Highlights collision points
+            showVelocity: true, // Shows velocity vectors
+            // ... other options ...
+        }
+    });
+
+    // Run the renderer
+   Matter.Render.run(this.renderer);
+} */
 }
 
 export default gameStage;

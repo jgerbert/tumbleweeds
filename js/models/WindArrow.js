@@ -2,7 +2,7 @@ import Particle from './Particle.js';
 
 // Configuration Constants for WindArrow
 const WIND_ARROW_MIN_PARTICLES = 0;  // Minimum number of particles for visualization
-const WIND_ARROW_MAX_PARTICLES = 0.4; // Maximum number of particles for strong winds
+const WIND_ARROW_MAX_PARTICLES = 0.46; // Maximum number of particles for strong winds
 const WIND_ARROW_SIZE = 66;          // Size of the wind arrow for visualization
 const WIND_ARROW_SCALING_FACTOR = 0.001; // Factor to scale wind magnitude to a visual representation
 
