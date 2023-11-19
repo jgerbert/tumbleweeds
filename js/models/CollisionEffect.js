@@ -13,22 +13,27 @@ class CollisionEffect {
      * @param {Object} collisionNormal - The normal vector at the point of collision.
      * @param {number} numParticles - The number of particles to create.
      */
-    createRicochetParticles(collisionPoint, collisionNormal, numParticles = 10) {
-        const colors = ['red', 'blue', 'yellow']; // Colors for the particles
+    createRicochetParticles(collisionPoint, collisionNormal, numParticles = 20) {
+        const colors = ['#8b4513', '#654321', '#a0522d']; // Darker shades of brown
 
         for (let i = 0; i < numParticles; i++) {
-            const angle = Math.atan2(-collisionNormal.y, -collisionNormal.x) + (Math.random() - 0.5) * Math.PI / 4;
-            const speed = Math.random() * 2 + 2; // Random speed for each particle
+            // Adjusted angle and increased speed for a 'zing' effect
+            const angle = Math.atan2(-collisionNormal.y, -collisionNormal.x) + (Math.random() - 0.5) * Math.PI / 3;
+            const speed = Math.random() * 3 + 2; // Increased initial speed
+
+            // Smaller, elongated, and irregular size
+            const size = Math.random() * 2 + 1; // Much smaller size
+            const opacity = 0.8 - Math.random() * 0.4;
 
             const particle = {
                 x: collisionPoint.x,
                 y: collisionPoint.y,
                 vx: Math.cos(angle) * speed,
                 vy: Math.sin(angle) * speed,
-                size: Math.random() * 5 + 10, // Larger size for visibility
-                color: colors[i % colors.length], // Cycle through red, blue, and yellow
-                opacity: 1, // Full opacity
-                lifespan: 60 // Lifespan in frames
+                size,
+                color: colors[i % colors.length],
+                opacity,
+                lifespan: 60 // Adjust as needed
             };
 
             this.particles.push(particle);
@@ -64,9 +69,10 @@ class CollisionEffect {
      */
     render(ctx) {
         this.particles.forEach(particle => {
-            ctx.fillStyle = particle.color; // Use particle's color
+            // Render elongated and irregular shapes
+            ctx.fillStyle = particle.color;
             ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.size, 0, 2 * Math.PI);
+            ctx.ellipse(particle.x, particle.y, particle.size, particle.size / 2, Math.random() * Math.PI, 0, 2 * Math.PI);
             ctx.fill();
         });
     }
