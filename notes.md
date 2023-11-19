@@ -16,6 +16,7 @@
     - Confuse: activates the confuse postprocessing effect for a short period of time, confusing the user.
     - Chaos: activates the chaos postprocessing effect for a short period of time, heavily disorienting the user.
     - Slingshot
+    - confetti cannons on win
 
 ## Animation Illusions    
     Here are a few thoughts on animation illusions that can be used in video games:

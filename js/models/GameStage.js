@@ -27,8 +27,8 @@ class gameStage {
      // Set the game controller
     this.gameController = null;
 
-    // Enable debug rendering
-    // this.enableDebugRendering(canvasWidth, canvasHeight);
+    // Enable debug rendering - for wireframes 
+     // this.enableDebugRendering(canvasWidth, canvasHeight);
     }
   
   setGameController(gameController) {
