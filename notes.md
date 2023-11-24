@@ -3,9 +3,11 @@
 ## To Do
 - High score tracking.
 - Responsive UI for desktop and mobile devices.
-- Animation illusions
+- Animation illusions - Instead of perfectly round particles, consider using irregular shapes or even small animated sprites of dust clouds.  If resources allow, consider adding a small animation for each particle, such as a swirl or puff, to enhance the cartoon-like feel.
 - Game Paused on Key press P 
 - Single player and two player modes.
+- Ricochet sound on high-speed collisions -Sound Effect
+For the sound effect, you can trigger a gunshot ricochet sound alongside the particle effect creation. Ensure the sound is brief and has that characteristic 'zing' sound followed by a softer settling noise, mimicking dust settling after the initial impact.
 
 ## Wish List
   - Powerups

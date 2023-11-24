@@ -28,7 +28,7 @@ The code structure is organized into **models**, **views**, and **controllers**.
 
 ## `js/models/`
 Directory for game models.
-
+- `CollisionEffect.js`: manages the partcles that represent ricochet dust in the game.
 - `GameStage.js`: Represents the Matter.js world with game elements.
 - `Paddle.js`: Represents the paddles and their behavior.
 - `Tumbleweed.js`: Represents the tumbleweed Hexagon (ball) and its movement logic.
