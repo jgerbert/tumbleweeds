@@ -47,6 +47,7 @@ export function preloadAssets() {
     song1: 'assets/sounds/song1.mp3',
     doh1: 'assets/sounds/doh1.mp3',
     doh2: 'assets/sounds/doh2.mp3',
+    ping: 'assets/sounds/ping.mp3',
     // gameover4: 'assets/sounds/gameover4.mp3',
   };
 

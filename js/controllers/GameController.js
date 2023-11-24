@@ -113,6 +113,7 @@ class GameController {
     this.gameoverSound3 = new Audio(this.assets.audio.gameover3);
     this.dohSound1 = new Audio(this.assets.audio.doh1);
     this.dohSound2 = new Audio(this.assets.audio.doh2);
+    this.pingSound = new Audio(this.assets.audio.ping);
   }   
   
   playBackgroundMusic() {

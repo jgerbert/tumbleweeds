@@ -12,8 +12,8 @@ const PARTICLE_FADE_OUT_START_MAX = 3000;
 const PARTICLE_FADE_OUT_DURATION = 5000;
 
 // Minimum and maximum size of the particle.
-const PARTICLE_SIZE_MIN = 0.8;
-const PARTICLE_SIZE_MAX = 14.2;
+const PARTICLE_SIZE_MIN = 0.4;
+const PARTICLE_SIZE_MAX = 5.0;
 
 // Base and range for calculating the opacity factor of the particle.
 const PARTICLE_OPACITY_FACTOR_BASE = 0.5;
@@ -146,15 +146,15 @@ function getRandomRotationSpeed() {
 // Returns a random primary color from a predefined list.
 function getRandomColor() {
   const primaryColors = [
-   // { name: "Red", hex: "#FF0000" },
-   // { name: "Blue", hex: "#0000FF" },
-   // { name: "Yellow", hex: "#FFFF00" },
-    { name: "Caramel", hex: "#C57A44" },
+    { name: "b1", hex: "#8b4513" },
+    { name: "b2", hex: "#654321" },
+    { name: "b3", hex: "#a0522d" }, 
+    /*{ name: "Caramel", hex: "#C57A44" },
     { name: "Buff", hex: "#E0AA83" },
     { name: "Burnt sienna", hex: "#C97C65" },
     { name: "Fawn", hex: "#EFAF6D" },
     { name: "Persian orange", hex: "#D89574" },
-    { name: "Brown sugar", hex: "#A5633A" },
+    { name: "Brown sugar", hex: "#A5633A" },*/
   ];
   return primaryColors[Math.floor(Math.random() * primaryColors.length)].hex;
 }

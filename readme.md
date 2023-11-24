@@ -21,7 +21,8 @@ The game is built using the following technologies and frameworks:
 - JavaScript
 - Matter.js - a 2D physics engine, for managing the physics world and the interactions between game objects.
 - Simplex noise for x and y direction + force for wind simulation
-- Model-View-Controller (MVC) architecture pattern for separation of concerns
+- Model-View-Controller (MVC) architecture pattern for separation of concerns for better maintainability and scalability.
+- ES6 Modules: Enhances code organization and modularity, making it easier to manage dependencies and updates.
 
 # Project Structure
 The code structure is organized into **models**, **views**, and **controllers**. The models (`Tumbleweed.js`, `Paddle.js`, and `Player.js`) represent the game objects and their properties. The views (`GameStageView.js`) is responsible for rendering the game objects on the canvas. The controllers (`GameController.js` and `InputController.js`) manage the game state and handle player input.
@@ -34,7 +35,7 @@ Directory for game models.
 - `Tumbleweed.js`: Represents the tumbleweed Hexagon (ball) and its movement logic.
 - `Wind.js`: Represents the wind and its force generation. Uses Simplex noise with x and y direction and force.
 - `WindArrow.js`: manages the display of a wind arrow and the generation of particles to represent the effect of wind in the game environment
-- `Particle.js`: particles class manages the partcles that represent dust in the game.
+- `Particle.js`: particles class manages the partcles that represent atmospheric dust in the game.
 - `Player.js`: Represents a game player with properties and methods related to scoring and serving.
 
 ## `js/views/`
