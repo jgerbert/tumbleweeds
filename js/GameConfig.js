@@ -14,8 +14,8 @@
 // Base configuration for a tumbleweed in the game
 const baseTumbleweed = {
   
-  radius: 50, // 50
-  scale: 1, // 1
+  radius: 100, // 50
+  scale: 2, // 1
   density: 0.00005, // 00005
   friction: 0.14, // 0.14
   frictionAir: 0.001, // .001
@@ -40,8 +40,8 @@ const basePaddle = {
   kickAngle: 45, // 45
   kickRotationDuration: 310, // 310
   resetRotationDuration: 120, // 120
-  width: 20, // 30
-  height: 150, // 200
+  width: 40, // 30
+  height: 300, // 200
   leftPaddlePositionRatio: 0.02, // .02
   rightPaddlePositionRatio: 0.98, // .98
   leftPaddleImage: 'assets/images/p1-paddle.png',
